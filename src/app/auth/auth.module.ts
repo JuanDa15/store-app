@@ -6,13 +6,15 @@ import { RegisterFormComponent } from './components/register-form/register-form.
 import { FormsModule } from '@angular/forms';
 import { RegisterComponent } from './pages/register/register.component';
 import { LoginComponent } from './pages/login/login.component';
+import { LoginFormComponent } from './components/login-form/login-form.component';
 
 
 @NgModule({
   declarations: [
     RegisterFormComponent,
     RegisterComponent,
-    LoginComponent
+    LoginComponent,
+    LoginFormComponent
   ],
   imports: [
     CommonModule,

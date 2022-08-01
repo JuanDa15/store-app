@@ -1,43 +1,56 @@
-<form id="register-form" #registerForm="ngForm" (ngSubmit)="createUser( $event)">
-  <div class="input-group">
-    <label for="register-name" class="input-group__label">
-      Name*:
-    </label>
-    <input type="text" id="register-name" class="input-group__input"
-           [(ngModel)]="user.name" name="name" required>
-    <p class="input-group__errors">
-      Error
-    </p>
-  </div>
-  <div class="input-group">
-    <label for="register-email" class="input-group__label">
-      Email*:
-    </label>
-    <input type="email" id="register-email" class="input-group__input"
-           [(ngModel)]="user.email" name="email" required>
-    <p class="input-group__errors">
-      Error
-    </p>
-  </div>
-  <div class="input-group">
-    <label for="register-password" class="input-group__label">
-      Password*:
-    </label>
-    <input type="password" id="register-password" class="input-group__input"
-           [(ngModel)]="user.password" name="password" required>
-    <p class="input-group__errors">
-      Error
-    </p>
-  </div>
-  <div class="input-group">
-    <label for="register-verify-password" class="input-group__label">
-      Verify password*:
-    </label>
-    <input type="password" id="register-verify-password" class="input-group__input"
-           [(ngModel)]="user.verifyPassword" name="verify-password" required>
-    <p class="input-group__errors">
-      Error
-    </p>
-  </div>
-  <button type="submit" [disabled]="registerForm.invalid">Register</button>
-</form>
+<section id="register-form-container">
+  <form id="register-form" #registerForm="ngForm"
+        (ngSubmit)="createUser( $event)">
+    <div class="input-group">
+      <label for="register-name" class="input-group__label">
+        Name*
+      </label>
+      <input type="text" id="register-name" class="input-group__input"
+             [(ngModel)]="user.name" name="name" required
+             placeholder="Write your name">
+      <p class="input-group__error"
+         [@openClose]="invalidControl('name') ? 'open' : 'closed'">
+        {{errorMessage('name')}}
+      </p>
+    </div>
+    <div class="input-group">
+      <label for="register-email" class="input-group__label">
+        Email address*
+      </label>
+      <input type="email" id="register-email" class="input-group__input"
+             [(ngModel)]="user.email" name="email" required
+             placeholder="Write your email"
+             pattern="/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/">
+      <p class="input-group__error"
+         [@openClose]="invalidControl('email') ? 'open' : 'closed'">
+        {{errorMessage('email')}}
+      </p>
+    </div>
+    <div class="input-group">
+      <label for="register-password" class="input-group__label">
+        Password*
+      </label>
+      <input type="password" id="register-password" class="input-group__input"
+             [(ngModel)]="user.password" name="password" required
+             placeholder="Write your password">
+      <p class="input-group__error"
+         [@openClose]="invalidControl('password') ? 'open' : 'closed'">
+        {{errorMessage('password')}}
+      </p>
+    </div>
+    <div class="input-group">
+      <label for="register-verify-password" class="input-group__label">
+        Verify password*
+      </label>
+      <input type="password" id="register-verify-password"
+             class="input-group__input" [(ngModel)]="user.verifyPassword"
+             name="verify-password" required
+             placeholder="Verify your password">
+      <p class="input-group__error"
+         [@openClose]="invalidControl('verify-password') ? 'open' : 'closed'">
+        {{errorMessage('verify-password')}}
+      </p>
+    </div>
+    <button id="register-form-submit" type="submit">Register</button>
+  </form>
+</section>
