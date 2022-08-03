@@ -19,7 +19,6 @@ interface User {
       transition('closed => open', [ animate('.3s') ]),
       transition('open => closed', [ animate('.3s') ]),
     ]),
-
   ]
 })
 export class RegisterFormComponent implements OnInit {
@@ -44,27 +43,25 @@ export class RegisterFormComponent implements OnInit {
   }
 
   public errorMessage(controlName: string): string {
-    const errors: ValidationErrors =
-      this.registerForm?.controls[controlName]?.errors || {};
+    const errors: ValidationErrors | null =
+      this.registerForm?.controls[controlName]?.errors;
 
-    if (errors['required']) {
-      return 'Field required';
-    } else if (errors['pattern']) {
+    if (errors?.['pattern']) {
       return 'Invalid email';
-    }else {
+    } else if (errors?.['required']) {
+      return 'Field required';
+    } else {
       return '';
     }
   }
 
-  public createUser( event: SubmitEvent ): void {
+  public createUser( ): void {
     if (this.registerForm?.invalid) {
       for (let key in this.registerForm?.controls) {
         this.registerForm.controls[key].markAllAsTouched();
       }
     } else {
-      console.log('ta bien');
+      console.log(this.registerForm.value);
     }
-    console.log(event);
-    console.log(this.registerForm);
   }
 }

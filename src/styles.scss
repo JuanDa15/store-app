@@ -2,10 +2,10 @@
 
 html {
   box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
 }
 
 *, *::after, *::before{
-  font-family: 'Montserrat', sans-serif;
   box-sizing: inherit;
 }
 
@@ -36,5 +36,150 @@ html {
 
   &__auto {
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  }
+}
+// Input
+.input-group {
+  display: flex;
+  flex-flow: column nowrap;
+  gap: .1rem;
+
+  &__label {
+    font-weight: 600;
+    font-size: .9rem;
+  }
+
+  &__input {
+    border: none;
+    background-color: rgb(238, 238, 238);
+    padding: .5rem .3rem;
+    border-radius: .5rem;
+  }
+
+  &__error {
+    text-align: center;
+    border: 1px solid rgb(156, 31, 31);
+    padding: .5rem .3rem;
+    border-radius: .5rem;
+    font-weight: 500;
+    color: rgb(156, 31, 31);
+    background-color: rgb(224, 202, 202);
+  }
+}
+
+.error {
+  transition: color .3s ease, border .3s ease;
+  label {
+    color: rgb(156, 31, 31);
+  }
+
+  input {
+    border: 1px solid rgb(156, 31, 31);
+  }
+}
+// alerts
+.alert {
+  padding: 0.6rem 1rem;
+  border-radius: 0.5rem;
+  margin: .5rem 0;
+  font-weight: 500;
+
+  &__danger {
+    background-color: rgb(224, 196, 196);
+    color: rgb(97, 41, 41);
+    border: 1px solid rgb(97,41,41);
+  }
+}
+// Titles
+.title {
+  text-align: center;
+  margin-bottom: 2rem;
+  position: relative;
+  font-size: 2.2rem;
+
+  &::after {
+    content: '';
+    position: absolute;
+    height: 1px;
+    border-bottom: 3px solid rgb(98, 185, 120);
+    width: 20%;
+    bottom: -5px;
+    left: 40%;
+  }
+}
+
+
+// Buttons Types
+// Primary
+// Secondary
+// Success
+// Warning
+// Info
+// Danger
+// Dark
+// Large
+
+// Buttons versions
+// Filled
+// Outlined
+// Text
+// Rounded
+
+// Buttons statuses
+// Enabled
+// disabled
+// Hover
+// Focused
+// Pressed
+
+.btn {
+  width: 100%;
+  padding: 1rem;
+  border: none;
+  border-radius: .5rem;
+  cursor: pointer;
+  transition: all .3s ease;
+  font-weight: 600;
+
+  &__primary {
+
+    &-filled {
+      background-color: rgb(98, 185, 120);
+      color: #fff;
+
+      &:hover {
+        box-shadow: inset 0 0 0 2em rgb(0, 0, 0);
+      }
+    }
+
+    &-outlined {
+      border: 1px solid rgb(98, 185, 120);
+      color: rgb(98, 185, 120);
+
+      &:hover {
+        box-shadow: inset 0 0 0 2em rgb(98, 185, 120);
+        color: #fff;
+      }
+    }
+
+    &-text {
+      color: rgb(98, 185, 120);
+
+      &:hover {
+        color: #000;
+      }
+    }
+  }
+
+  &__secondary {
+
+    &-filled {
+      background-color: #000;
+      color: #fff;
+
+      &:hover {
+        box-shadow: inset 0 0 0 2em rgb(98, 185, 120);
+      }
+    }
   }
 }

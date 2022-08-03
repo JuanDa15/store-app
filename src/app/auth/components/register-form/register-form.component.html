@@ -1,7 +1,8 @@
 <section id="register-form-container">
   <form id="register-form" #registerForm="ngForm"
-        (ngSubmit)="createUser( $event)">
-    <div class="input-group">
+        (ngSubmit)="createUser()">
+    <div class="input-group"
+         [ngClass]="{'error': invalidControl('name')}">
       <label for="register-name" class="input-group__label">
         Name*
       </label>
@@ -13,20 +14,22 @@
         {{errorMessage('name')}}
       </p>
     </div>
-    <div class="input-group">
+    <div class="input-group"
+         [ngClass]="{'error': invalidControl('email')}">
       <label for="register-email" class="input-group__label">
         Email address*
       </label>
       <input type="email" id="register-email" class="input-group__input"
              [(ngModel)]="user.email" name="email" required
              placeholder="Write your email"
-             pattern="/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/">
+             pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
       <p class="input-group__error"
          [@openClose]="invalidControl('email') ? 'open' : 'closed'">
         {{errorMessage('email')}}
       </p>
     </div>
-    <div class="input-group">
+    <div class="input-group"
+         [ngClass]="{'error': invalidControl('password')}">
       <label for="register-password" class="input-group__label">
         Password*
       </label>
@@ -38,7 +41,8 @@
         {{errorMessage('password')}}
       </p>
     </div>
-    <div class="input-group">
+    <div class="input-group"
+         [ngClass]="{'error': invalidControl('verify-password')}">
       <label for="register-verify-password" class="input-group__label">
         Verify password*
       </label>
@@ -51,6 +55,12 @@
         {{errorMessage('verify-password')}}
       </p>
     </div>
-    <button id="register-form-submit" type="submit">Register</button>
+    <button id="register-form-submit" type="submit" class="btn btn__primary-filled">
+      Register
+    </button>
+    <button type="button" class="btn btn__secondary-filled"
+            routerLink="/products/list">
+      <i class="fa-solid fa-arrow-left"></i> Home
+    </button>
   </form>
 </section>

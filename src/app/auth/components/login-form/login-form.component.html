@@ -1,1 +1,48 @@
-<login-form></login-form>
+<section id="login-form-container">
+  <form id="login-form" #loginForm="ngForm"
+        (ngSubmit)="createUser()">
+    <div class="input-group"
+         [ngClass]="{'error': invalidControl('email')}">
+      <label for="login-email" class="input-group__label">
+        Email address*
+      </label>
+      <input type="email" id="login-email" class="input-group__input"
+             [(ngModel)]="user.email" name="email" required
+             placeholder="Write your email"
+             pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
+      <p class="input-group__error"
+         [@openClose]="invalidControl('email') ? 'open' : 'closed'">
+        {{errorMessage('email')}}
+      </p>
+    </div>
+    <div class="input-group"
+         [ngClass]="{'error': invalidControl('password')}">
+      <label for="login-password" class="input-group__label">
+        Password*
+      </label>
+      <input type="password" id="login-password" class="input-group__input"
+             [(ngModel)]="user.password" name="password" required
+             placeholder="Write your password">
+      <p class="input-group__error"
+         [@openClose]="invalidControl('password') ? 'open' : 'closed'">
+        {{errorMessage('password')}}
+      </p>
+    </div>
+    <div class="alert alert__danger" *ngIf="invalidLogin">
+      Invalid user or password combination
+    </div>
+    <button id="login-form-submit" type="submit" class="btn btn__primary-filled">
+      Login
+    </button>
+    <button type="button" class="btn btn__secondary-filled"
+            routerLink="/products/list">
+      <i class="fa-solid fa-arrow-left"></i> Home
+    </button>
+
+    <p class="btn btn__primary-text forgot-password">Forgot my password</p>
+
+    <button type="button" class="btn btn__primary-outlined">
+      Sign Up
+    </button>
+  </form>
+</section>

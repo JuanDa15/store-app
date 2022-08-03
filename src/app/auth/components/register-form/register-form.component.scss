@@ -8,42 +8,7 @@
 
 #register-form {
   min-width: 300px;
-}
-
-#register-form-submit {
-  width: 100%;
-  padding: .8rem;
-  border: none;
-  border-radius: .5rem;
-  background-color: rgb(98, 185, 120);
-  color: #fff;
-  cursor: pointer;
-}
-
-.input-group {
   display: flex;
   flex-flow: column nowrap;
-  gap: .3rem;
-  margin-bottom: 1rem;
-
-  &__label {
-    font-weight: 600;
-    font-size: .9rem;
-  }
-
-  &__input {
-    border: none;
-    background-color: rgb(238, 238, 238);
-    padding: .5rem .3rem;
-    border-radius: .5rem;
-  }
-
-  &__error {
-    border: 1px solid rgb(156, 31, 31);
-    padding: .5rem .3rem;
-    border-radius: .5rem;
-    font-weight: 500;
-    color: rgb(156, 31, 31);
-    background-color: rgb(224, 202, 202);
-  }
+  gap: .5rem;
 }

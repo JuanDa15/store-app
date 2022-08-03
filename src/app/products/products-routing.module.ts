@@ -4,12 +4,18 @@ import { ProductsListComponent } from './pages/products-list/products-list.compo
 
 const routes: Routes = [
   {
-    path: 'list',
-    component: ProductsListComponent
-  },
-  {
-    path: '**',
-    redirectTo: 'list'
+    path: '',
+    children: [
+      {
+        path: 'list',
+        component: ProductsListComponent
+      },
+      {
+        path: '**',
+        redirectTo: '/products/list'
+      }
+
+    ]
   }
 ];
 
