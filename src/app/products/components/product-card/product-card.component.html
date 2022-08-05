@@ -1,6 +1,7 @@
 <article class="product-card">
-  <img  class="product-card__img"
-        [src]="product.image" [alt]="product.name">
+  <image [dataSrc]="product.image" [dataAlt]="product.name"
+         [id]="product.id" class="product-card__img">
+  </image>
   <p>{{product.price}}</p>
   <p>{{product.name}}</p>
 </article>
