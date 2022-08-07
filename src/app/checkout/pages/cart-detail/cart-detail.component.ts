@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MessageService } from 'primeng/api';
+import { CartItem } from 'src/app/auth/interfaces/cart-item.interface';
 import { Product } from 'src/app/products/interface/product.interface';
 import { CartService } from 'src/app/products/services/cart.service';
 import Swal from 'sweetalert2';
@@ -14,53 +15,8 @@ export class CartDetailComponent implements OnInit {
 
   public cartServiceInstance: CartService;
 
-  public cartList: Product[];
+  public cartList: CartItem[];
 
-  products: Product[] = [
-    {
-      id: 1,
-      name: 'EL mejor juguete',
-      price: 565,
-      image: './assets/images/toy.webp',
-      category: 'all',
-      quantity: 0
-    },
-    {
-      id: 2,
-      name: 'Bicicleta casi nueva',
-      price: 356,
-      image: './assets/images/bike.webp',
-      quantity: 0
-    },
-    {
-      id: 3,
-      name: 'Colleción de albumnes',
-      price: 34,
-      image: './assets/images/album.webp',
-      quantity: 0
-    },
-    {
-      id: 4,
-      name: 'Mis libros',
-      price: 23,
-      image: './assets/images/books.webp',
-      quantity: 0
-    },
-    {
-      id: 5,
-      name: 'Casa para perro',
-      price: 34,
-      image: './assets/images/house.webp',
-      quantity: 0
-    },
-    {
-      id: 6,
-      name: 'Gafas',
-      price: 3434,
-      image: './assets/images/glasses.webp',
-      quantity: 0
-    }
-  ]
 
   constructor(private messageService: MessageService) {
     this.cartServiceInstance = CartService.getInstance();
@@ -85,7 +41,7 @@ export class CartDetailComponent implements OnInit {
     this.messageService.add({
       severity:'success',
       summary: 'Success',
-      detail: `"${product.name}" removed from cart`
+      detail: `"${product.title}" removed from cart`
     });
   }
 

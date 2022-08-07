@@ -12,23 +12,23 @@
     <tbody>
       <tr *ngFor="let cartItem of cartList">
         <td>
-          <cart-product-preview [product]="cartItem">
+          <cart-product-preview [product]="cartItem.product">
           </cart-product-preview>
         </td>
         <td>
-          {{cartItem.price | currency:'USD'}} USD
+          {{cartItem.product.price | currency:'USD'}} USD
         </td>
         <td>
           <quantity-manager [quantity]="cartItem.quantity"
-                            (onChangeValue)="updateQuantity( $event, cartItem.id )">
+                            (onChangeValue)="updateQuantity( $event, cartItem.product.id )">
           </quantity-manager>
         </td>
         <td>
-          {{(cartItem.price * cartItem.quantity)| currency:'USD'}} USD
+          {{(cartItem.product.price * cartItem.quantity)| currency:'USD'}} USD
         </td>
         <td>
           <i class="fas fa-times"
-             (click)="removeFromCart( cartItem )"></i>
+             (click)="removeFromCart( cartItem.product )"></i>
         </td>
       </tr>
       <div class="spacing"></div>

@@ -1,10 +1,10 @@
 <article class="product-card">
   <image class="product-card__img" [dataSrc]="product.image"
-         [dataAlt]="product.name" [id]="product.id">
+         [dataAlt]="product.title" [id]="product.id">
   </image>
   <div class="product-card__information">
     <p class="product-card__information-name">
-      {{product.name}}
+      {{product.title}}
     </p>
     <p class="product-card__information-price">
       <span>{{product.price | currency}}</span>

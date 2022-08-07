@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { CartItem } from 'src/app/auth/interfaces/cart-item.interface';
 import { Product } from '../interface/product.interface';
 
 @Injectable({
@@ -8,7 +9,7 @@ export class CartService {
 
   private static instance: CartService = new CartService();
 
-  private _cartList: Product[];
+  private _cartList: CartItem[];
 
   private constructor() {
     this._cartList = [];
@@ -28,16 +29,16 @@ export class CartService {
   }
 
 
-  get cartList(): Product[] {
+  get cartList(): CartItem[] {
     return [...this._cartList];
   }
 
-  set cartList( list: Product[]) {
+  set cartList( list: CartItem[]) {
     this._cartList = list;
   }
 
   get totalPrice(): number {
-    return this._cartList.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+    return this._cartList.reduce((sum, item) => sum + (item.product.price * item.quantity), 0);
   }
 
   public addToCart(product: Product): void {
@@ -45,7 +46,7 @@ export class CartService {
 
     if ( productPosition === -1) {
       this._cartList.push({
-        ...product,
+        product,
         quantity: 1
       });
     } else {
@@ -61,7 +62,7 @@ export class CartService {
   }
 
   private _findProductInCart( productID: number ): number {
-    return this.cartList.findIndex(cartItem => cartItem.id === productID);
+    return this.cartList.findIndex(cartItem => cartItem.product.id === productID);
   }
 
   public removeFromCart(product: Product): void {
