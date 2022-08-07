@@ -1,0 +1,10 @@
+<button type="button" (click)="updateValue( -1 )"
+        [disabled]="quantity <= 0">
+  -
+</button>
+<input type="number" [(ngModel)]="quantity" (input)="updateValueInput()"
+       ProductsQuantityLimiter>
+<button type="button" (click)="updateValue( 1 )"
+        [disabled]="quantity >= 10">
+  +
+</button>

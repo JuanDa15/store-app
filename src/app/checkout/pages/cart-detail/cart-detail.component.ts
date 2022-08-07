@@ -1,18 +1,20 @@
 import { Component, OnInit } from '@angular/core';
 import { MessageService } from 'primeng/api';
 import { Product } from 'src/app/products/interface/product.interface';
-import { CartListItem } from '../../interface/cartListItem.interface';
-import { CartService } from '../../services/cart.service';
+import { CartService } from 'src/app/products/services/cart.service';
+import Swal from 'sweetalert2';
 
 @Component({
-  selector: 'app-products-list',
-  templateUrl: './products-list.component.html',
-  styleUrls: ['./products-list.component.scss']
+  selector: 'app-cart-detail',
+  templateUrl: './cart-detail.component.html',
+  styleUrls: ['./cart-detail.component.scss'],
+  providers: [MessageService]
 })
-export class ProductsListComponent implements OnInit {
+export class CartDetailComponent implements OnInit {
+
+  public cartServiceInstance: CartService;
 
   public cartList: Product[];
-  private cartServiceInstance: CartService;
 
   products: Product[] = [
     {
@@ -59,15 +61,32 @@ export class ProductsListComponent implements OnInit {
       quantity: 0
     }
   ]
-  constructor() {
+
+  constructor(private messageService: MessageService) {
     this.cartServiceInstance = CartService.getInstance();
     this.cartList = this.cartServiceInstance.cartList;
   }
 
+  get totalPrice(): number {
+    return this.cartServiceInstance.totalPrice;
+  }
+
+
   ngOnInit(): void {
   }
 
-  public onAddToCart( product: Product): void {
-    this.cartServiceInstance.addToCart(product);
+  public updateQuantity( quantity: number, productID: number): void {
+    this.cartServiceInstance.updateItemQuantity(quantity, productID);
   }
+
+  public removeFromCart( product: Product): void {
+    this.cartServiceInstance.removeFromCart( product );
+    this.cartList = this.cartServiceInstance.cartList;
+    this.messageService.add({
+      severity:'success',
+      summary: 'Success',
+      detail: `"${product.name}" removed from cart`
+    });
+  }
+
 }

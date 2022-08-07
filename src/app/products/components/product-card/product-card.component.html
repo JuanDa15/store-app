@@ -1,7 +1,18 @@
 <article class="product-card">
-  <image [dataSrc]="product.image" [dataAlt]="product.name"
-         [id]="product.id" class="product-card__img">
+  <image class="product-card__img" [dataSrc]="product.image"
+         [dataAlt]="product.name" [id]="product.id">
   </image>
-  <p>{{product.price}}</p>
-  <p>{{product.name}}</p>
+  <div class="product-card__information">
+    <p class="product-card__information-name">
+      {{product.name}}
+    </p>
+    <p class="product-card__information-price">
+      <span>{{product.price | currency}}</span>
+      <button class="btn btn__primary-filled"
+              type="button" (click)="onAddToCart()">
+        <i class="fas fa-cart-plus"></i>
+      </button>
+    </p>
+  </div>
 </article>
+<p-toast position="bottom-center"></p-toast>

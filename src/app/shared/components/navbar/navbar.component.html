@@ -13,9 +13,21 @@
   <div class="side-menu" [class.active]="activeMenu">
     <button type="button" (click)="toggleMenu()">Close</button>
     <ul>
-      <li><a href="">All</a></li>
-      <li><a href="">Clothes</a></li>
-      <li><a href="">Electronics</a></li>
+      <li (click)="toggleMenu()">
+        <a routerLink="/products/list" routerLinkActive="active">All</a>
+      </li>
+      <li (click)="toggleMenu()">
+        <a href="">Clothes</a>
+      </li>
+      <li (click)="toggleMenu()">
+        <a href="">Electronics</a>
+      </li>
+      <li (click)="toggleMenu()">
+        <a routerLink="/auth/login" routerLinkActive="active">Login</a>
+      </li>
+      <li (click)="toggleMenu()">
+        <a routerLink="/auth/register" routerLinkActive="active">Register</a>
+      </li>
     </ul>
   </div>
 </div>
@@ -26,30 +38,30 @@
         <img src="./assets/svg/logo_yard_sale.svg" alt="logo">
       </a>
       <ul>
-        <li><a>All</a></li>
-        <li><a>Clothes</a></li>
-        <li><a>Electronics</a></li>
+        <li (click)="toggleMenu()">
+          <a routerLink="/products/list" routerLinkActive="active">All</a>
+        </li>
+        <li (click)="toggleMenu()">
+          <a>Clothes</a>
+        </li>
+        <li (click)="toggleMenu()">
+          <a>Electronics</a>
+        </li>
+        <li (click)="toggleMenu()">
+          <a routerLink="/auth/login" routerLinkActive="active">Login</a>
+        </li>
+        <li (click)="toggleMenu()">
+          <a routerLink="/auth/register" routerLinkActive="active">Register</a>
+        </li>
       </ul>
     </nav>
     <div class="info">
       <div class="account">jdoo1115@gmail.com</div>
       <div>
-        <a>
+        <a routerLink="/checkout/cart">
           <img src="./assets/svg/icon_shopping_cart.svg" alt="logo">
         </a>
       </div>
     </div>
   </div>
 </div>
-
-<!-- <a routerLink="/products/list">Home</a>
-<ul>
-  <li>
-    <a routerLink="/auth/login">Log In</a>
-  </li>
-  <li>
-    <a routerLink="/auth/register">
-      Register
-    </a>
-  </li>
-</ul> -->

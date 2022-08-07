@@ -1,6 +1,8 @@
 .show-mobile {
   display: block;
   box-shadow: 0px 2px 5px rgb(black, .2);
+  position: relative;
+  z-index: 1000;
   > div {
     padding: 1em;
     display: flex;
@@ -32,6 +34,8 @@
 }
 .hide-mobile {
   display: none;
+  position: relative;
+  z-index: 1000;
   box-shadow: 0px 2px 5px rgb(black, .2);
   > div {
     padding: 1em;

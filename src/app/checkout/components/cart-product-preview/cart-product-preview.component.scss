@@ -1,0 +1,17 @@
+.product-preview {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  gap: .5rem;
+  width: 400px;
+
+  image {
+    width: 125px;
+    overflow: hidden;
+    border-radius: .5rem;
+  }
+
+  &__name {
+    font-weight: 600;
+  }
+}

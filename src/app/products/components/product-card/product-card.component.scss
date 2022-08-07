@@ -1,7 +1,39 @@
 .product-card {
+  overflow: hidden;
+  border-radius: .5rem;
+  border: 1px solid rgb(214, 212, 212);
+  box-shadow: 0 0 2px rgb(197, 197, 197);
 
   &__img {
     width: 100%;
     object-fit: contain;
+  }
+
+  &__information {
+    padding: .5rem;
+
+    &-name {
+      font-weight: 400;
+      font-size: 1.1rem;
+      margin-bottom: .5rem;
+    }
+
+    &-price {
+      display: flex;
+      flex-flow: row nowrap;
+      justify-content: space-between;
+
+      span {
+        font-weight: 600;
+        font-size: 1.3rem;
+      }
+
+      button {
+        max-width: 50px;
+        padding: .5rem;
+        background-color: rgb(98, 185, 120);
+      }
+
+    }
   }
 }

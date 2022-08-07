@@ -1,0 +1,71 @@
+.cart {
+
+  &__title {
+    margin-top: 3rem;
+  }
+
+  &__table-container {
+    margin-top: 3rem;
+
+    table {
+      border-collapse: collapse;
+
+      thead {
+
+        th {
+          text-transform: uppercase;
+          text-align: left;
+          padding: 0 1rem;
+          color: rgb(153, 153, 153);
+          font-size: .9rem;
+          font-weight: 500;
+        }
+      }
+
+      tbody {
+        margin-top: 1.5rem;
+
+        &:before {
+          line-height:1em;
+          content:"\200C";
+          display:block;
+        }
+        tr {
+
+          td {
+            padding-left: 1rem;
+            padding-right: 1rem;
+
+            &:nth-child(5) {
+              text-align: center;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  &__total {
+    border-top: 2px solid rgb(153, 153, 153);
+
+    &-label {
+      text-transform: uppercase;
+      font-weight: 600;
+      padding-top: 1rem;
+    }
+
+    &-price {
+      text-align: right;
+      font-weight: 600;
+      padding-top: 1rem;
+    }
+  }
+}
+
+.spacing {
+  &:before {
+    line-height:2em;
+    content:"\200C";
+    display:block;
+  }
+}

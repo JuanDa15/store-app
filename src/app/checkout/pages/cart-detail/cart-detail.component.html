@@ -1,0 +1,54 @@
+<h1 class="cart__title">Items in my cart.</h1>
+<section *ngIf="cartList.length > 0;else noItems"
+         class="cart__table-container">
+  <table>
+    <thead>
+      <th>ITEM</th>
+      <th>Unit Price</th>
+      <th>Quantity</th>
+      <th>Final Price</th>
+      <th>Remove</th>
+    </thead>
+    <tbody>
+      <tr *ngFor="let cartItem of cartList">
+        <td>
+          <cart-product-preview [product]="cartItem">
+          </cart-product-preview>
+        </td>
+        <td>
+          {{cartItem.price | currency:'USD'}} USD
+        </td>
+        <td>
+          <quantity-manager [quantity]="cartItem.quantity"
+                            (onChangeValue)="updateQuantity( $event, cartItem.id )">
+          </quantity-manager>
+        </td>
+        <td>
+          {{(cartItem.price * cartItem.quantity)| currency:'USD'}} USD
+        </td>
+        <td>
+          <i class="fas fa-times"
+             (click)="removeFromCart( cartItem )"></i>
+        </td>
+      </tr>
+      <div class="spacing"></div>
+      <tr class="cart__total">
+        <td class="cart__total-label">
+          Total:
+        </td>
+        <td colspan="3" class="cart__total-price">
+          <span>{{ totalPrice |currency:'USD'}} USD</span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+
+<ng-template #noItems>
+  you still have no items
+  <a routerLink="/products/list">
+    Go shopping
+  </a>
+</ng-template>
+<p-toast position="bottom-center"></p-toast>
