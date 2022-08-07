@@ -1,3 +1,8 @@
+a, a:focus, a:visited, a:active{
+    text-decoration: none;
+    color: inherit;
+}
+
 .cart {
 
   &__title {
@@ -67,5 +72,21 @@
     line-height:2em;
     content:"\200C";
     display:block;
+  }
+}
+
+.no-items {
+  margin-top: 2rem;
+  font-size: 1.3rem;
+  font-weight: 500;
+  a {
+    font-size: 1.6rem;
+    color: rgb(98, 185, 120);
+    transition: all .3s ease;
+
+    &:hover {
+      color: #000;
+      text-decoration: underline;
+    }
   }
 }
