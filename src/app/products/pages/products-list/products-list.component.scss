@@ -1,0 +1,23 @@
+.product-detail {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 1000;
+}
+
+.left-responsive {
+  left: 0;
+
+  @media (min-width: 481px) and (max-width: 769px) {
+    left: 10%;
+  }
+
+  @media (min-width: 770px) and (max-width: 1279px) {
+    left: 50%;
+  }
+
+  @media (min-width: 1280px) {
+    left: 75%;
+  }
+}

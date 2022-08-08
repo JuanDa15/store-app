@@ -9,13 +9,15 @@ import { QuantityManagerComponent } from './components/quantity-manager/quantity
 import { FormsModule } from '@angular/forms';
 import { ProductsQuantityLimiterDirective } from './directives/products-quantity-limiter.directive';
 import { PrimengModule } from '../primeng/primeng.module';
+import { DetailedProductComponent } from './components/detailed-product/detailed-product.component';
 
 @NgModule({
   declarations: [
     ProductsListComponent,
     ProductCardComponent,
     QuantityManagerComponent,
-    ProductsQuantityLimiterDirective
+    ProductsQuantityLimiterDirective,
+    DetailedProductComponent
   ],
   imports: [
     CommonModule,

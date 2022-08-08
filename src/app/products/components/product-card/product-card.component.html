@@ -10,7 +10,7 @@
     <p class="product-card__information-price">
       <span>{{product.price | currency}}</span>
       <button class="btn btn__primary-filled"
-              type="button" (click)="onAddToCart()">
+              type="button" (click)="onAddToCart( $event)">
         <i class="fas fa-cart-plus"></i>
       </button>
     </p>

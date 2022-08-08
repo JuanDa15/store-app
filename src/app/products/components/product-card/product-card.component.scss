@@ -4,6 +4,12 @@
   box-shadow: 0 0 2px rgb(197, 197, 197);
   height: 100%;
   overflow:hidden;
+  transition: all .3s ease;
+  cursor: pointer;
+
+  &:hover {
+    box-shadow: 0 0 5px rgb(98, 185, 120);
+  }
 
   &__information {
     padding: .5rem;

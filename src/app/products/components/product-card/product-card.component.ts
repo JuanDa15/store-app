@@ -17,7 +17,8 @@ export class ProductCardComponent {
 
   constructor(private messageService: MessageService) { }
 
-  public onAddToCart(): void {
+  public onAddToCart( event: Event): void {
+    event.stopPropagation();
     this.addedProduct.emit(this.product);
     this.messageService.add({
       severity:'success',
