@@ -1,11 +1,12 @@
 <article class="product-card">
-  <image class="product-card__img" [setImage]="product.image"
+  <image [setImage]="product.image"
          [setAlt]="product.title" [id]="product.id">
   </image>
   <div class="product-card__information">
     <p class="product-card__information-name">
       {{product.title}}
     </p>
+    <div class="spacer"></div>
     <p class="product-card__information-price">
       <span>{{product.price | currency}}</span>
       <button class="btn btn__primary-filled"

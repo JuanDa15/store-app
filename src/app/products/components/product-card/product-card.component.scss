@@ -1,21 +1,22 @@
 .product-card {
-  overflow: hidden;
   border-radius: .5rem;
   border: 1px solid rgb(214, 212, 212);
   box-shadow: 0 0 2px rgb(197, 197, 197);
-
-  &__img {
-    width: 100%;
-    object-fit: contain;
-  }
+  height: 100%;
+  overflow:hidden;
 
   &__information {
     padding: .5rem;
+    display: flex;
+    flex-direction: column;
+    height: 140px;
 
     &-name {
       font-weight: 400;
       font-size: 1.1rem;
       margin-bottom: .5rem;
+      height: 90px;
+      overflow: hidden;
     }
 
     &-price {
@@ -36,4 +37,10 @@
 
     }
   }
+}
+
+
+
+.spacer {
+  flex: 1 1 auto;
 }
