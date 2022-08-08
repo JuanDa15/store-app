@@ -11,7 +11,7 @@ import Swal from 'sweetalert2';
   styleUrls: ['./cart-detail.component.scss'],
   providers: [MessageService]
 })
-export class CartDetailComponent implements OnInit {
+export class CartDetailComponent {
 
   public cartServiceInstance: CartService;
 
@@ -25,10 +25,6 @@ export class CartDetailComponent implements OnInit {
 
   get totalPrice(): number {
     return this.cartServiceInstance.totalPrice;
-  }
-
-
-  ngOnInit(): void {
   }
 
   public updateQuantity( quantity: number, productID: number): void {

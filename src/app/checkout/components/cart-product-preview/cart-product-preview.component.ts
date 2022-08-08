@@ -6,13 +6,10 @@ import { Product } from 'src/app/products/interface/product.interface';
   templateUrl: './cart-product-preview.component.html',
   styleUrls: ['./cart-product-preview.component.scss']
 })
-export class CartProductPreviewComponent implements OnInit {
+export class CartProductPreviewComponent {
 
   @Input() product!: Product;
 
   constructor() { }
-
-  ngOnInit(): void {
-  }
 
 }

@@ -5,20 +5,17 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
   templateUrl: './quantity-manager.component.html',
   styleUrls: ['./quantity-manager.component.scss']
 })
-export class QuantityManagerComponent implements OnInit {
+export class QuantityManagerComponent {
 
   public quantity!: number;
 
-  @Input('quantity') set setQuantity(quantity: number){
+  @Input() set setQuantity(quantity: number){
     this.quantity =  quantity;
   }
 
-  @Output('onChangeValue') changeValue: EventEmitter<number> = new EventEmitter();
+  @Output() changeValue: EventEmitter<number> = new EventEmitter();
 
   constructor() { }
-
-  ngOnInit(): void {
-  }
 
   public updateValueInput(): void {
     this.changeValue.emit(this.quantity);

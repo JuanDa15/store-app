@@ -21,7 +21,7 @@ interface User {
     ]),
   ]
 })
-export class RegisterFormComponent implements OnInit {
+export class RegisterFormComponent {
 
   public user: User = {
     name: '',
@@ -33,9 +33,6 @@ export class RegisterFormComponent implements OnInit {
   @ViewChild('registerForm') registerForm!: NgForm;
 
   constructor() { }
-
-  ngOnInit(): void {
-  }
 
   public invalidControl(controlName: string) {
     const control: AbstractControl = this.registerForm?.controls[controlName];

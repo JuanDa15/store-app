@@ -9,16 +9,13 @@ import Swal from 'sweetalert2';
   styleUrls: ['./product-card.component.scss'],
   providers: [MessageService]
 })
-export class ProductCardComponent implements OnInit {
+export class ProductCardComponent {
 
-  @Input('data') product!: Product;
+  @Input() product!: Product;
 
   @Output() addedProduct: EventEmitter<Product> = new EventEmitter();
 
   constructor(private messageService: MessageService) { }
-
-  ngOnInit(): void {
-  }
 
   public onAddToCart(): void {
     this.addedProduct.emit(this.product);

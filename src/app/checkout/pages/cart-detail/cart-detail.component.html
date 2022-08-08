@@ -19,8 +19,8 @@
           {{cartItem.product.price | currency:'USD'}} USD
         </td>
         <td>
-          <quantity-manager [quantity]="cartItem.quantity"
-                            (onChangeValue)="updateQuantity( $event, cartItem.product.id )">
+          <quantity-manager [setQuantity]="cartItem.quantity"
+                            (changeValue)="updateQuantity( $event, cartItem.product.id )">
           </quantity-manager>
         </td>
         <td>

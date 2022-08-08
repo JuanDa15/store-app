@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { CartItem } from 'src/app/auth/interfaces/cart-item.interface';
 import { Product } from '../interface/product.interface';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -10,6 +11,10 @@ export class CartService {
   private static instance: CartService = new CartService();
 
   private _cartList: CartItem[];
+
+  private myCart = new BehaviorSubject<CartItem[]>([]);
+
+  myCart$ = this.myCart.asObservable();
 
   private constructor() {
     this._cartList = [];
@@ -52,6 +57,7 @@ export class CartService {
     } else {
       this._cartList[productPosition].quantity += 1;
     }
+    this.myCart.next(this._cartList);
   }
 
   public updateItemQuantity( quantity: number, productID: number): void {
@@ -59,6 +65,7 @@ export class CartService {
 
     ( productPosition !== -1 ) &&
       (this._cartList[productPosition].quantity = quantity);
+    this.myCart.next(this._cartList);
   }
 
   private _findProductInCart( productID: number ): number {
@@ -69,5 +76,6 @@ export class CartService {
     const itemPosition = this._findProductInCart( product.id );
     (itemPosition !== -1 ) &&
       this._cartList.splice(itemPosition, 1);
+    this.myCart.next(this._cartList);
   }
 }

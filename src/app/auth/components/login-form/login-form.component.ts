@@ -21,7 +21,7 @@ interface Login {
     ]),
   ]
 })
-export class LoginFormComponent implements OnInit {
+export class LoginFormComponent {
 
   public user: Login = {
     email: '',
@@ -33,8 +33,6 @@ export class LoginFormComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit(): void {
-  }
   get invalidLogin(): boolean | null {
     return this.loginForm?.submitted && this.loginForm?.invalid ? true : false;
   }

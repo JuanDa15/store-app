@@ -7,16 +7,16 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
   `,
   styleUrls: ['./image.component.scss']
 })
-export class ImageComponent implements OnInit {
+export class ImageComponent {
   private _defaultImage: string;
   public imgSrc: string;
   public imgAlt: string;
 
-  @Input('dataSrc') set setImage( urlImg: string ) {
+  @Input() set setImage( urlImg: string ) {
     this.imgSrc = urlImg;
   }
 
-  @Input('dataAlt') set setAlt( altImg: string ) {
+  @Input() set setAlt( altImg: string ) {
     this.imgAlt = altImg;
   }
 
@@ -29,8 +29,6 @@ export class ImageComponent implements OnInit {
     this.imgAlt = '';
     this._defaultImage = 'assets/images/img-placeholder.svg';
   }
-
-  ngOnInit(): void {}
 
   public imgError(): void {
     this.imgSrc = this._defaultImage;
