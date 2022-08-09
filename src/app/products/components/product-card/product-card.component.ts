@@ -11,20 +11,30 @@ import Swal from 'sweetalert2';
 })
 export class ProductCardComponent {
 
+  public cantAddToCart: boolean;
+
   @Input() product!: Product;
 
   @Output() addedProduct: EventEmitter<Product> = new EventEmitter();
 
-  constructor(private messageService: MessageService) { }
+  constructor(private _messageService: MessageService) {
+    this.cantAddToCart = false;
+  }
 
   public onAddToCart( event: Event): void {
     event.stopPropagation();
     this.addedProduct.emit(this.product);
-    this.messageService.add({
+    this._messageService.add({
       severity:'success',
       summary: 'Success',
-      detail: `"${this.product.title}" added to cart`
+      detail: `"${this.product.title}" added to cart`,
+      life: 500
     });
+    this.cantAddToCart = true;
+  }
+
+  public closeToast(): void {
+    this.cantAddToCart = false;
   }
 
 }

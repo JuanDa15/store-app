@@ -1,7 +1,29 @@
 <div class="product-detailed">
-  <button type="button" (click)="closeDetail()">
-    close
+  <button type="button" class="product-detailed__close"
+          (click)="closeDetail()">
+    <i class="fa-solid fa-xmark"></i>
   </button>
-  xd xxxxxx
-
+  <div *ngIf="product" class="product-detailed__content">
+    <image [setImage]="product.image" [setAlt]="product.title">
+    </image>
+    <div class="content">
+      <p class="content__price">
+        {{product.price | currency:'USD'}}
+      </p>
+      <p class="content__title">
+        {{product.title}}
+      </p>
+      <p class="content__description">
+        {{product.description}}
+      </p>
+      <button class="btn btn__primary-filled content__btn"
+              (click)="addToCart()"
+              [disabled]="cantAddToCart">
+        <i class="fas fa-cart-plus"></i> Add to cart
+      </button>
+    </div>
+  </div>
 </div>
+<p-toast position="bottom-center" [preventOpenDuplicates]="true"
+         (onClose)="closeToast()">
+</p-toast>

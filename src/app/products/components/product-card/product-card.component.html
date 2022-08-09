@@ -10,10 +10,11 @@
     <p class="product-card__information-price">
       <span>{{product.price | currency}}</span>
       <button class="btn btn__primary-filled"
-              type="button" (click)="onAddToCart( $event)">
+              type="button" (click)="onAddToCart( $event)"
+              [disabled]="cantAddToCart">
         <i class="fas fa-cart-plus"></i>
       </button>
     </p>
   </div>
 </article>
-<p-toast position="bottom-center"></p-toast>
+<p-toast position="bottom-center" (onClose)="closeToast()"></p-toast>
