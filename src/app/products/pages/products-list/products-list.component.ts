@@ -2,6 +2,7 @@ import { animate, state, style, transition, trigger } from '@angular/animations'
 import { Component, OnInit } from '@angular/core';
 import { CartItem } from 'src/app/auth/interfaces/cart-item.interface';
 import { Product } from 'src/app/products/interface/product.interface';
+import { ProductDTO } from '../../interface/product-dto.interface';
 import { CartService } from '../../services/cart.service';
 import { ProductService } from '../../services/product.service';
 
@@ -56,5 +57,25 @@ export class ProductsListComponent implements OnInit {
 
   public closeDetailed(): void {
     this.selectedProduct = undefined;
+  }
+
+  public createProduct(): void {
+    const product: ProductDTO = {
+      title: 'Bolso',
+      price: 10000,
+      image: `https://placeimg.com/640/480/any?random=${Math.random()}`,
+      category: 'electronics',
+      description: 'Is a very expensive bag'
+    }
+
+    this._productService.createProduct(product).
+      subscribe({
+        next: (product) => {
+          this.products.unshift(product);
+        },
+        error: () => {
+
+        }
+      })
   }
 }
