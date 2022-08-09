@@ -55,3 +55,40 @@
     margin-top: 2rem;
   }
 }
+
+
+.skeleton {
+
+  &__container {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+
+    &-content {
+      width: 95%;
+      margin: 6rem auto 0;
+      display: flex;
+      flex-flow: column nowrap;
+      gap: .5rem;
+
+      p-skeleton {
+        &:nth-child(2) {
+          margin-top: 2rem;
+        }
+
+        &:nth-child(3) {
+          margin-top: .5rem;
+        }
+
+        &:nth-child(4) {
+          margin-top: 1.5rem;
+        }
+
+        &:nth-child(5) {
+          margin-top: 2rem;
+        }
+      }
+    }
+  }
+}

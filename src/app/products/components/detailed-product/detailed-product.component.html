@@ -3,7 +3,7 @@
           (click)="closeDetail()">
     <i class="fa-solid fa-xmark"></i>
   </button>
-  <div *ngIf="product" class="product-detailed__content">
+  <div *ngIf="product && !UIManagers.showSkeleton else skeleton" class="product-detailed__content" >
     <image [setImage]="product.image" [setAlt]="product.title">
     </image>
     <div class="content">
@@ -17,13 +17,31 @@
         {{product.description}}
       </p>
       <button class="btn btn__primary-filled content__btn"
-              (click)="addToCart()"
-              [disabled]="cantAddToCart">
+      (click)="addToCart()"
+              [disabled]="UIManagers.cantAddToCart">
         <i class="fas fa-cart-plus"></i> Add to cart
       </button>
     </div>
   </div>
 </div>
 <p-toast position="bottom-center" [preventOpenDuplicates]="true"
-         (onClose)="closeToast()">
+  (onClose)="closeToast()">
 </p-toast>
+
+
+<ng-template #skeleton>
+  <div class="skeleton__container">
+    <div class="skeleton__container-content">
+      <p-skeleton width="100%" height="310px">
+      </p-skeleton>
+      <p-skeleton width="6rem" height="35px">
+      </p-skeleton>
+      <p-skeleton width="100%" height="30px">
+      </p-skeleton>
+      <p-skeleton width="100%" height="100px">
+      </p-skeleton>
+      <p-skeleton width="100%" height="60px">
+      </p-skeleton>
+    </div>
+  </div>
+</ng-template>

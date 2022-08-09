@@ -15,7 +15,12 @@ export class DetailedProductComponent {
   private cartServiceInstance: CartService;
   public product!: Product;
   private _id!: number | undefined;
-  public cantAddToCart: boolean;
+
+  public UIManagers = {
+    cantAddToCart: false,
+    showSkeleton: false
+  }
+
   @Input() set productID( id: number | undefined ) {
     this._id = id;
     (this._id) && this._fetchProductData();
@@ -25,16 +30,20 @@ export class DetailedProductComponent {
   constructor(private _productService: ProductService,
               private _messageService: MessageService) {
     this.cartServiceInstance = CartService.getInstance();
-    this.cantAddToCart = false;
+    this.UIManagers.cantAddToCart = false;
   }
 
   private _fetchProductData(): void {
+    this.UIManagers.showSkeleton = true;
     this._productService.getSingleProduct(this._id!)
     .subscribe({
       next: (product) => {
-        (product)
-          ? this.product = product
-          : this._doesntExist();
+        if (product) {
+          this.product = product;
+          this.UIManagers.showSkeleton = false;
+        } else {
+         this._doesntExist();
+        }
       },
       error: () => {
         Swal.fire({
@@ -75,10 +84,10 @@ export class DetailedProductComponent {
       detail: `"${this.product.title}" added to cart`,
       life: 1500
     });
-    this.cantAddToCart = true;
+    this.UIManagers.cantAddToCart = true;
   }
 
-  closeToast(): void {
-    this.cantAddToCart = false;
+  public closeToast(): void {
+    this.UIManagers.cantAddToCart = false;
   }
 }
