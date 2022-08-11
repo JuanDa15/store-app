@@ -10,6 +10,8 @@ import { FormsModule } from '@angular/forms';
 import { ProductsQuantityLimiterDirective } from './directives/products-quantity-limiter.directive';
 import { PrimengModule } from '../primeng/primeng.module';
 import { DetailedProductComponent } from './components/detailed-product/detailed-product.component';
+import { ScrollingModule } from '@angular/cdk/scrolling';
+import { SwiperModule } from 'swiper/angular'
 
 @NgModule({
   declarations: [
@@ -24,7 +26,9 @@ import { DetailedProductComponent } from './components/detailed-product/detailed
     SharedModule,
     ProductsRoutingModule,
     FormsModule,
-    PrimengModule
+    PrimengModule,
+    ScrollingModule,
+    SwiperModule
   ],
   exports: [
     QuantityManagerComponent

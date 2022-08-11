@@ -27,7 +27,7 @@ export class ImageComponent {
   constructor() {
     this.imgSrc = '';
     this.imgAlt = '';
-    this._defaultImage = 'assets/images/img-placeholder.svg';
+    this._defaultImage = '/assets/images/img-placeholder.svg';
   }
 
   public imgError(): void {

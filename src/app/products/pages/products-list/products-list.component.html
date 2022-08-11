@@ -4,13 +4,13 @@
                 (click)="openDetail( product.id )">
   </product-card>
 </section>
+<pagination [limit]="pagination.limit"
+            [setOffset]="pagination.offset"
+            (changePage)="paginationManager( $event )">
+</pagination>
 <detailed-product [@openClose]="(selectedProduct) ?
                                   'open' : 'closed'"
                   class="product-detail left-responsive"
                   (closeProduct)="closeDetailed()"
                   [productID]="selectedProduct">
 </detailed-product>
-<button type="button" class="btn btn__primary-filled"
-        (click)="createProduct()">
-  Create Product
-</button>

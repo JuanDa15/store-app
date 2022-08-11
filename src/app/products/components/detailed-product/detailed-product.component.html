@@ -4,8 +4,12 @@
     <i class="fa-solid fa-xmark"></i>
   </button>
   <div *ngIf="product && !UIManagers.showSkeleton else skeleton" class="product-detailed__content" >
-    <image [setImage]="product.image" [setAlt]="product.title">
-    </image>
+    <swiper [config]="config">
+      <ng-template swiperSlide *ngFor="let image of product.images">
+        <image [setImage]="image" [setAlt]="product.title">
+        </image>
+      </ng-template>
+    </swiper>
     <div class="content">
       <p class="content__price">
         {{product.price | currency:'USD'}}

@@ -1,0 +1,15 @@
+.pagination {
+
+  &__container {
+    margin: 2rem auto;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    gap: 1.5rem;
+
+  }
+}
+
+.btn {
+  width: 100px;
+}

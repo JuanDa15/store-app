@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  api: 'https://fakestoreapi.com/'
+  // api: 'https://fakestoreapi.com/'
+  api: 'https://young-sands-07814.herokuapp.com/api/'
 };
 /*
 * For easier debugging in development mode, you can import the following file

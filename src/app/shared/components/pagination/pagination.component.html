@@ -1,0 +1,13 @@
+<div class="pagination__container">
+  <button type="button"
+          class="btn btn__primary-filled"
+          (click)="pagination( - limit)"
+          [disabled]="offset <= 0">
+    <i class="fas fa-angle-double-left"></i>
+  </button>
+  <button type="button"
+          class="btn btn__primary-filled"
+          (click)="pagination( limit)">
+    <i class="fas fa-angle-double-right"></i>
+  </button>
+</div>

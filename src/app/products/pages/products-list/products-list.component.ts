@@ -26,6 +26,12 @@ export class ProductsListComponent implements OnInit {
   public selectedProduct: number | undefined;
   public products: Product[];
 
+
+  public pagination = {
+    limit: 10,
+    offset: 0
+  }
+
   constructor(private _productService: ProductService) {
     this.products = [];
     this.cartServiceInstance = CartService.getInstance();
@@ -38,7 +44,7 @@ export class ProductsListComponent implements OnInit {
   }
 
   private _fetchProducts(): void {
-    this._productService.getAllProducts().subscribe({
+    this._productService.getAllProducts(this.pagination.limit, this.pagination.offset).subscribe({
       next: (products) => {
         this.products = products;
       }
@@ -59,23 +65,8 @@ export class ProductsListComponent implements OnInit {
     this.selectedProduct = undefined;
   }
 
-  public createProduct(): void {
-    const product: ProductDTO = {
-      title: 'Bolso',
-      price: 10000,
-      image: `https://placeimg.com/640/480/any?random=${Math.random()}`,
-      category: 'electronics',
-      description: 'Is a very expensive bag'
-    }
-
-    this._productService.createProduct(product).
-      subscribe({
-        next: (product) => {
-          this.products.unshift(product);
-        },
-        error: () => {
-
-        }
-      })
+  paginationManager(page: number): void {
+    this.pagination.offset += page;
+    this._fetchProducts();
   }
 }

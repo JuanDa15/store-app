@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { MessageService } from 'primeng/api';
 import Swal from 'sweetalert2';
+import { SwiperOptions } from 'swiper';
 import { Product } from '../../interface/product.interface';
 import { CartService } from '../../services/cart.service';
 import { ProductService } from '../../services/product.service';
@@ -19,6 +20,11 @@ export class DetailedProductComponent {
   public UIManagers = {
     cantAddToCart: false,
     showSkeleton: false
+  }
+
+  public config: SwiperOptions = {
+    slidesPerView: 1,
+    spaceBetween: 50
   }
 
   @Input() set productID( id: number | undefined ) {
