@@ -1,8 +1,7 @@
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpParams, HttpStatusCode } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { catchError, map, Observable, retry, throwError } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { ProductDTO } from '../interface/product-dto.interface';
 import { Product } from '../interface/product.interface';
 
 @Injectable({
@@ -18,13 +17,29 @@ export class ProductService {
     const params: HttpParams = new HttpParams()
       .set('limit',limit)
       .set('offset',offset)
-    return this._http.get<Product[]>(this._api + 'products', {
+    return this._http.get<Product[]>(this._api+'products', {
       params
-    });
+    }).pipe(
+      retry(3),
+      map(products => products.map(product => {
+        return {
+          ...product,
+          taxes: .19 * product.price
+        }
+      }))
+    )
   }
 
   public getSingleProduct(id: number): Observable<Product> {
-    return this._http.get<Product>(`${this._api}products/${id}`);
+    return this._http.get<Product>(`${this._api}products/${id}`)
+      .pipe(
+        catchError( (error: HttpErrorResponse) => {
+          if (error.status === HttpStatusCode.InternalServerError ) {
+            return throwError(() => new Error('Ups error in the server'));
+          }
+          return throwError(() => new Error('Ups spomething goes wrong'));
+        } )
+      );
   }
 
 }

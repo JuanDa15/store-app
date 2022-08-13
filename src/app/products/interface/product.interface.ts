@@ -5,4 +5,5 @@ export interface Product {
   images: string[];
   category?: string;
   description: string;
+  taxes?: number;
 }

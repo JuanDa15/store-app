@@ -7,8 +7,12 @@
       {{product.title}}
     </p>
     <div class="spacer"></div>
+    <span *ngIf="product.taxes">
+      Taxes: {{product.taxes | currency:'USD'}}
+    </span>
     <p class="product-card__information-price">
       <span>{{product.price | currency}}</span>
+      <br />
       <button class="btn btn__primary-filled"
               type="button" (click)="onAddToCart( $event)"
               [disabled]="cantAddToCart">
