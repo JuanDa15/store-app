@@ -1,6 +1,9 @@
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { Component, ViewChild } from '@angular/core';
 import { AbstractControl, NgForm, ValidationErrors } from '@angular/forms';
+import Swal from 'sweetalert2';
+import { ServerError } from '../../interfaces/error-answer.interface';
+import { AuthService } from '../../services/auth.service';
 
 
 interface Login {
@@ -31,7 +34,7 @@ export class LoginFormComponent {
 
   @ViewChild('loginForm') loginForm!: NgForm;
 
-  constructor() { }
+  constructor(private _authService: AuthService) { }
 
   get invalidLogin(): boolean | null {
     return this.loginForm?.submitted && this.loginForm?.invalid ? true : false;
@@ -61,8 +64,27 @@ export class LoginFormComponent {
         this.loginForm.controls[key].markAllAsTouched();
       }
     } else {
-      console.log(this.loginForm.value);
-      console.log(this.loginForm);
+      this._authService.login(this.user.email, this.user.password)
+        .subscribe({
+          next: (value) => {
+            Swal.fire({
+              icon:'success',
+              title: 'Login success',
+              text: 'Successfully logged in !!',
+              position: 'top-right',
+              timer: 1500
+            });
+          },
+          error: (err) => {
+            Swal.fire({
+              icon:'error',
+              title: 'User',
+              text: 'User or password invalid',
+              position: 'top-right',
+              timer: 1500
+            })
+          }
+        })
     }
   }
 

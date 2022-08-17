@@ -1,6 +1,10 @@
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { AbstractControl, NgForm, ValidationErrors } from '@angular/forms';
+import Swal from 'sweetalert2';
+import { ServerError } from '../../interfaces/error-answer.interface';
+import { UserDTO } from '../../interfaces/user.interface';
+import { UsersService } from '../../services/users.service';
 
 interface User {
   name: string;
@@ -32,7 +36,7 @@ export class RegisterFormComponent {
 
   @ViewChild('registerForm') registerForm!: NgForm;
 
-  constructor() { }
+  constructor(private _userService: UsersService) { }
 
   public invalidControl(controlName: string) {
     const control: AbstractControl = this.registerForm?.controls[controlName];
@@ -58,7 +62,33 @@ export class RegisterFormComponent {
         this.registerForm.controls[key].markAllAsTouched();
       }
     } else {
-      console.log(this.registerForm.value);
+      const body: UserDTO = {...this.user};
+      delete body?.verifyPassword;
+      this._userService.create(body).subscribe({
+        next: (value) => {
+          Swal.fire({
+            icon:'success',
+            title: 'User created',
+            text: 'Successfully created !!',
+            position: 'top-right',
+            timer: 1500
+          });
+        },
+        error: (value) => {
+          let err = <ServerError>value.error;
+          let error = '';
+          err.message.forEach((message) => {
+            error += `${message}, `
+          })
+          Swal.fire({
+            icon:'error',
+            title: 'User',
+            text: error,
+            position: 'top-right',
+            timer: 1500
+          })
+        }
+      })
     }
   }
 }
