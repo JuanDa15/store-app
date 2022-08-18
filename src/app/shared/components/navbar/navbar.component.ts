@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/auth/services/auth.service';
 import { CartService } from 'src/app/products/services/cart.service';
+import { TokenService } from 'src/app/utils/services/token.service';
 
 @Component({
   selector: 'navbar',
@@ -11,7 +13,8 @@ export class NavbarComponent implements OnInit {
   public activeMenu: boolean = false;
   public productsQuantity: number = 0;
 
-  constructor() {
+  constructor(public authService: AuthService,
+              public tokenService: TokenService) {
     this._cartInstance = CartService.getInstance();
   }
 

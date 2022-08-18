@@ -1,9 +1,14 @@
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { Component, ViewChild } from '@angular/core';
 import { AbstractControl, NgForm, ValidationErrors } from '@angular/forms';
+import { Router } from '@angular/router';
+import { Observable, switchMap } from 'rxjs';
+import { TokenService } from 'src/app/utils/services/token.service';
 import Swal from 'sweetalert2';
 import { ServerError } from '../../interfaces/error-answer.interface';
+import { User } from '../../interfaces/user.interface';
 import { AuthService } from '../../services/auth.service';
+import { UsersService } from '../../services/users.service';
 
 
 interface Login {
@@ -34,7 +39,8 @@ export class LoginFormComponent {
 
   @ViewChild('loginForm') loginForm!: NgForm;
 
-  constructor(private _authService: AuthService) { }
+  constructor(private _authService: AuthService,
+              private _router: Router) {}
 
   get invalidLogin(): boolean | null {
     return this.loginForm?.submitted && this.loginForm?.invalid ? true : false;
@@ -65,15 +71,20 @@ export class LoginFormComponent {
       }
     } else {
       this._authService.login(this.user.email, this.user.password)
-        .subscribe({
-          next: (value) => {
+        .pipe(
+          switchMap( () => {
+            return this._authService.profile()
+          })
+        ).subscribe({
+          next: (user: User) => {
             Swal.fire({
               icon:'success',
               title: 'Login success',
-              text: 'Successfully logged in !!',
+              text: `Welcome ${user.name}`,
               position: 'top-right',
               timer: 1500
             });
+            this._router.navigateByUrl('/products/list');
           },
           error: (err) => {
             Swal.fire({
@@ -87,5 +98,4 @@ export class LoginFormComponent {
         })
     }
   }
-
 }

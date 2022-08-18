@@ -48,15 +48,19 @@
           <a>Electronics</a>
         </li>
         <li (click)="toggleMenu()">
-          <a routerLink="/auth/login" routerLinkActive="active">Login</a>
+          <a routerLink="/auth/login" routerLinkActive="active"
+             *ngIf="!tokenService.get()">Login</a>
         </li>
         <li (click)="toggleMenu()">
-          <a routerLink="/auth/register" routerLinkActive="active">Register</a>
+          <a routerLink="/auth/register" routerLinkActive="active"
+             *ngIf="!tokenService.get()">Register</a>
         </li>
       </ul>
     </nav>
     <div class="info">
-      <div class="account">jdoo1115@gmail.com</div>
+      <div class="account" *ngIf="authService.user?.email">
+        {{authService.user!.email}}
+      </div>
       <div class="shopping-cart-container">
         <a routerLink="/checkout/cart">
           <img src="./assets/svg/icon_shopping_cart.svg" alt="logo">

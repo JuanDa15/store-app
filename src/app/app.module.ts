@@ -6,7 +6,9 @@ import { AppComponent } from './app.component';
 import { AuthModule } from './auth/auth.module';
 import { SharedModule } from './shared/shared.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HttpClientModule } from "@angular/common/http";
+import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
+import { TimeInterceptor } from './utils/interceptors/time.interceptor';
+import { TokenInterceptor } from './utils/interceptors/token.interceptor';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,14 @@ import { HttpClientModule } from "@angular/common/http";
     AuthModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS, useClass: TimeInterceptor, multi: true
+    },
+    {
+      provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
