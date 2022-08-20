@@ -11,7 +11,8 @@ import { ProductsQuantityLimiterDirective } from './directives/products-quantity
 import { PrimengModule } from '../primeng/primeng.module';
 import { DetailedProductComponent } from './components/detailed-product/detailed-product.component';
 import { ScrollingModule } from '@angular/cdk/scrolling';
-import { SwiperModule } from 'swiper/angular'
+import { SwiperModule } from 'swiper/angular';
+import { CategoriesComponent } from './pages/categories/categories.component'
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { SwiperModule } from 'swiper/angular'
     ProductCardComponent,
     QuantityManagerComponent,
     ProductsQuantityLimiterDirective,
-    DetailedProductComponent
+    DetailedProductComponent,
+    CategoriesComponent
   ],
   imports: [
     CommonModule,
