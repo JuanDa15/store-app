@@ -111,7 +111,10 @@
             "lintFilePatterns": [
               "src/**/*.ts",
               "src/**/*.html"
-            ]
+            ],
+            "allowedCommonJsDependencies": [
+              "sweetalert2"
+           ]
           }
         }
       }

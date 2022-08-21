@@ -1,0 +1,28 @@
+<article class="product-card">
+  <image [setImage]="product.images[0]"
+         [setAlt]="product.title" [id]="product.id">
+  </image>
+  <div class="product-card__information">
+    <p class="product-card__information-name">
+      {{product.title}}
+    </p>
+    <div class="spacer"></div>
+    <span class="product-card__information-category"
+          (click)="navigateToCategory( $event, product )">
+      {{ product.category?.name}}
+    </span>
+    <span *ngIf="product.taxes">
+      Taxes: {{product.taxes | currency:'USD'}}
+    </span>
+    <p class="product-card__information-price">
+      <span>{{product.price | currency}}</span>
+      <br />
+      <button class="btn btn__primary-filled"
+              type="button" (click)="onAddToCart( $event)"
+              [disabled]="cantAddToCart">
+        <i class="fas fa-cart-plus"></i>
+      </button>
+    </p>
+  </div>
+</article>
+<p-toast position="bottom-center" (onClose)="closeToast()"></p-toast>

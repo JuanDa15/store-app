@@ -3,13 +3,12 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { AuthModule } from './auth/auth.module';
 import { SharedModule } from './shared/shared.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 import { TimeInterceptor } from './utils/interceptors/time.interceptor';
 import { TokenInterceptor } from './utils/interceptors/token.interceptor';
-
+import { QuicklinkModule } from "ngx-quicklink";
 @NgModule({
   declarations: [
     AppComponent
@@ -19,8 +18,8 @@ import { TokenInterceptor } from './utils/interceptors/token.interceptor';
     BrowserAnimationsModule,
     AppRoutingModule,
     SharedModule,
-    AuthModule,
-    HttpClientModule
+    HttpClientModule,
+    QuicklinkModule
   ],
   providers: [
     {

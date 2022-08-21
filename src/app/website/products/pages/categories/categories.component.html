@@ -1,0 +1,14 @@
+<h1 *ngIf="products.length"> {{categoryTitle}} </h1>
+<product-list [products]="products"
+              *ngIf="products.length > 0; else NoResults">
+</product-list>
+<pagination [limit]="pagination.limit"
+            [setOffset]="pagination.offset"
+            (changePage)="paginationManager( $event )"
+            *ngIf="products.length">
+</pagination>
+<ng-template #NoResults>
+  <div class="no-results">
+    <p>There is no results found to this search D:</p>
+  </div>
+</ng-template>

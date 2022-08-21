@@ -198,3 +198,22 @@ html {
 
 
 }
+
+
+//
+
+.no-results {
+  display: grid;
+  height: calc(100vh - 100px);
+  place-items: center;
+
+  p {
+    padding: 1rem 1.5rem;
+    color: rgb(16, 73, 138);
+    border-radius: .5rem;
+    border: 2px solid rgb(16, 73, 138);
+    background-color: rgb(151, 177, 202);
+    margin: auto;
+    font-size: 1.3rem;
+  }
+}

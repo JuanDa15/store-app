@@ -6,27 +6,32 @@
     <a>
       <img src="./assets/svg/logo_yard_sale.svg" alt="logo">
     </a>
-    <a>
-      <img src="./assets/svg/icon_shopping_cart.svg" alt="logo">
-    </a>
+    <div class="shopping-cart-container">
+      <a routerLink="/v1/checkout/cart">
+        <img src="./assets/svg/icon_shopping_cart.svg" alt="logo">
+      </a>
+      <span class="counter">{{productsQuantity}}</span>
+    </div>
   </div>
   <div class="side-menu" [class.active]="activeMenu">
     <button type="button" (click)="toggleMenu()">Close</button>
     <ul>
       <li (click)="toggleMenu()">
-        <a routerLink="/products/list" routerLinkActive="active">All</a>
+        <a routerLink="/v1/products/list" routerLinkActive="active">All</a>
       </li>
       <li (click)="toggleMenu()">
-        <a href="">Clothes</a>
+        <a routerLink="/v1/products/category/5"
+           routerLinkActive="active">Clothes</a>
       </li>
       <li (click)="toggleMenu()">
-        <a href="">Electronics</a>
+        <a routerLink="/v1/products/category/3"
+           routerLinkActive="active">Electronics</a>
       </li>
       <li (click)="toggleMenu()">
-        <a routerLink="/auth/login" routerLinkActive="active">Login</a>
+        <a routerLink="/v1/auth/login" routerLinkActive="active" *ngIf="!tokenService.get()">Login</a>
       </li>
       <li (click)="toggleMenu()">
-        <a routerLink="/auth/register" routerLinkActive="active">Register</a>
+        <a routerLink="/v1/auth/register" routerLinkActive="active" *ngIf="!tokenService.get()">Register</a>
       </li>
     </ul>
   </div>
@@ -39,20 +44,29 @@
       </a>
       <ul>
         <li (click)="toggleMenu()">
-          <a routerLink="/products/list" routerLinkActive="active">All</a>
+          <a routerLink="/v1/products/list"
+            routerLinkActive="active">
+            All
+          </a>
         </li>
         <li (click)="toggleMenu()">
-          <a>Clothes</a>
+          <a routerLink="/v1/products/category/5"
+             routerLinkActive="active">
+            Clothes
+          </a>
         </li>
         <li (click)="toggleMenu()">
-          <a>Electronics</a>
+          <a routerLink="/v1/products/category/3"
+             routerLinkActive="active">
+             Electronics
+          </a>
         </li>
         <li (click)="toggleMenu()">
-          <a routerLink="/auth/login" routerLinkActive="active"
+          <a routerLink="/v1/auth/login" routerLinkActive="active"
              *ngIf="!tokenService.get()">Login</a>
         </li>
         <li (click)="toggleMenu()">
-          <a routerLink="/auth/register" routerLinkActive="active"
+          <a routerLink="/v1/auth/register" routerLinkActive="active"
              *ngIf="!tokenService.get()">Register</a>
         </li>
       </ul>
@@ -62,7 +76,7 @@
         {{authService.user!.email}}
       </div>
       <div class="shopping-cart-container">
-        <a routerLink="/checkout/cart">
+        <a routerLink="/v1/checkout/cart">
           <img src="./assets/svg/icon_shopping_cart.svg" alt="logo">
         </a>
         <span class="counter">{{productsQuantity}}</span>

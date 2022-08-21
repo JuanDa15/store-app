@@ -4,6 +4,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { RouterModule } from '@angular/router';
 import { ImageComponent } from './components/image/image.component';
 import { PaginationComponent } from './components/pagination/pagination.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
 
 
 @NgModule({
@@ -11,6 +12,7 @@ import { PaginationComponent } from './components/pagination/pagination.componen
     NavbarComponent,
     ImageComponent,
     PaginationComponent,
+    NotFoundComponent,
   ],
   imports: [
     CommonModule,
@@ -19,7 +21,8 @@ import { PaginationComponent } from './components/pagination/pagination.componen
   exports: [
     NavbarComponent,
     ImageComponent,
-    PaginationComponent
+    PaginationComponent,
+    NotFoundComponent
   ]
 })
 export class SharedModule { }

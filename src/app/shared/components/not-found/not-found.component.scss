@@ -1,0 +1,7 @@
+.not-found {
+  &__container {
+    display: grid;
+    place-items: center;
+    height: calc(100vh - 150px);;
+  }
+}
