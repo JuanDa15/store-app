@@ -19,7 +19,7 @@ const routes: Routes = [
   },
   {
     path: '**',
-    redirectTo: '/v1',
+    redirectTo: '/v1/products/list',
     // component: NotFoundComponent
   }
 ];
