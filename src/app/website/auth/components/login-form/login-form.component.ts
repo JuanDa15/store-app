@@ -3,6 +3,7 @@ import { Component, ViewChild } from '@angular/core';
 import { AbstractControl, NgForm, ValidationErrors } from '@angular/forms';
 import { Router } from '@angular/router';
 import { switchMap } from 'rxjs';
+import { TokenService } from 'src/app/utils/services/token.service';
 import Swal from 'sweetalert2';
 import { User } from '../../interfaces/user.interface';
 import { AuthService } from '../../services/auth.service';
@@ -27,7 +28,7 @@ interface Login {
   ]
 })
 export class LoginFormComponent {
-
+  // TODO: MOver logica del login y register a las pages
   public user: Login = {
     email: '',
     password: '',
@@ -37,7 +38,8 @@ export class LoginFormComponent {
   @ViewChild('loginForm') loginForm!: NgForm;
 
   constructor(private _authService: AuthService,
-              private _router: Router) {}
+              private _router: Router,
+              private _tokenService: TokenService) {}
 
   get invalidLogin(): boolean | null {
     return this.loginForm?.submitted && this.loginForm?.invalid ? true : false;
@@ -81,7 +83,7 @@ export class LoginFormComponent {
               position: 'top-right',
               timer: 1500
             });
-            this._router.navigateByUrl('/products/list');
+            this._router.navigateByUrl('/v1/products/list');
           },
           error: (err) => {
             Swal.fire({

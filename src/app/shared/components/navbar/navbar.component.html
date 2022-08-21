@@ -63,17 +63,19 @@
         </li>
         <li (click)="toggleMenu()">
           <a routerLink="/v1/auth/login" routerLinkActive="active"
-             *ngIf="!tokenService.get()">Login</a>
+             *ngIf="!userInformation">Login</a>
         </li>
         <li (click)="toggleMenu()">
           <a routerLink="/v1/auth/register" routerLinkActive="active"
-             *ngIf="!tokenService.get()">Register</a>
+             *ngIf="!userInformation">Register</a>
         </li>
       </ul>
     </nav>
     <div class="info">
-      <div class="account" *ngIf="authService.user?.email">
-        {{authService.user!.email}}
+      <div class="account" *ngIf="userInformation"
+           routerLink="/v1/auth/profile">
+        {{userInformation!.email}}
+        <button type="button" (click)="logout()">X</button>
       </div>
       <div class="shopping-cart-container">
         <a routerLink="/v1/checkout/cart">

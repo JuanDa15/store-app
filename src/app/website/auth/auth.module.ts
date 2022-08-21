@@ -7,13 +7,15 @@ import { FormsModule } from '@angular/forms';
 import { RegisterComponent } from './pages/register/register.component';
 import { LoginComponent } from './pages/login/login.component';
 import { LoginFormComponent } from './components/login-form/login-form.component';
+import { ProfileComponent } from './pages/profile/profile.component';
 
 @NgModule({
   declarations: [
     RegisterFormComponent,
     RegisterComponent,
     LoginComponent,
-    LoginFormComponent
+    LoginFormComponent,
+    ProfileComponent
   ],
   imports: [
     CommonModule,

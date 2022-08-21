@@ -26,7 +26,16 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forRoot(routes, {
-    preloadingStrategy: QuicklinkStrategy
+    // npm i ngx-quicklink --save
+    // Consist in load the modules depending of the links that are show in
+    // screen
+    preloadingStrategy: QuicklinkStrategy,
+    // Consist in load the modules depending of the routes that the developer selects
+    // througt the data attribute of the route
+    // preloadingStrategy: CustomPreloadService
+    // Consist in pre-load all modules separated in the lazy load strategy,
+    // before the main chunk loads
+    // preloadingStrategy: PreloadAllModules
   })],
   exports: [RouterModule]
 })
