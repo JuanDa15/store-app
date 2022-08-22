@@ -5,6 +5,7 @@ import { RouterModule } from '@angular/router';
 import { ImageComponent } from './components/image/image.component';
 import { PaginationComponent } from './components/pagination/pagination.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
+import { QuicklinkModule } from 'ngx-quicklink';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
   ],
   imports: [
     CommonModule,
-    RouterModule
+    RouterModule,
+    QuicklinkModule
   ],
   exports: [
     NavbarComponent,

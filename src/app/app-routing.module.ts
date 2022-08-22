@@ -35,7 +35,10 @@ const routes: Routes = [
     // preloadingStrategy: CustomPreloadService
     // Consist in pre-load all modules separated in the lazy load strategy,
     // before the main chunk loads
-    // preloadingStrategy: PreloadAllModules
+    // preloadingStrategy: PreloadAllModules,
+    // IA Strategy: With google analytics o firebase analytics and guess js
+    enableTracing: false,
+    paramsInheritanceStrategy: 'always'
   })],
   exports: [RouterModule]
 })

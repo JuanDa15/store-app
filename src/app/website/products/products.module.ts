@@ -15,6 +15,7 @@ import { ProductListComponent } from './components/product-list/product-list.com
 import { LayoutComponent } from './pages/layout/layout.component'
 import { PrimengModule } from 'src/app/primeng/primeng.module';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { QuicklinkModule } from 'ngx-quicklink';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { SharedModule } from 'src/app/shared/shared.module';
     PrimengModule,
     ScrollingModule,
     SwiperModule,
-    SharedModule
+    SharedModule,
+    QuicklinkModule
   ],
   exports: [
     QuantityManagerComponent

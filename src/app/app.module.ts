@@ -9,6 +9,8 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 import { TimeInterceptor } from './utils/interceptors/time.interceptor';
 import { TokenInterceptor } from './utils/interceptors/token.interceptor';
 import { QuicklinkModule } from "ngx-quicklink";
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 @NgModule({
   declarations: [
     AppComponent
@@ -19,7 +21,13 @@ import { QuicklinkModule } from "ngx-quicklink";
     AppRoutingModule,
     SharedModule,
     HttpClientModule,
-    QuicklinkModule
+    QuicklinkModule,
+    ServiceWorkerModule.register('./ngsw-worker.js', {
+      enabled: environment.production,
+      // Register the ServiceWorker as soon as the application is stable
+      // or after 30 seconds (whichever comes first).
+      registrationStrategy: 'registerWhenStable:30000'
+    })
   ],
   providers: [
     {

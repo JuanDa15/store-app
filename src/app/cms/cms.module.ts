@@ -6,6 +6,7 @@ import { TasksComponent } from './pages/tasks/tasks.component';
 import { GridComponent } from './pages/grid/grid.component';
 import { LayoutComponent } from './components/layout/layout.component';
 import { SharedModule } from 'primeng/api';
+import { QuicklinkModule } from 'ngx-quicklink';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { SharedModule } from 'primeng/api';
   imports: [
     CommonModule,
     CmsRoutingModule,
-    SharedModule
+    SharedModule,
+    QuicklinkModule
   ]
 })
 export class CmsModule { }

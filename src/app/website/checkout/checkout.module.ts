@@ -7,6 +7,7 @@ import { CartProductPreviewComponent } from './components/cart-product-preview/c
 import { SharedModule } from 'src/app/shared/shared.module';
 import { PrimengModule } from 'src/app/primeng/primeng.module';
 import { ProductsModule } from '../products/products.module';
+import { QuicklinkModule } from 'ngx-quicklink';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { ProductsModule } from '../products/products.module';
     CheckoutRoutingModule,
     ProductsModule,
     SharedModule,
-    PrimengModule
+    PrimengModule,
+    QuicklinkModule
   ]
 })
 export class CheckoutModule { }

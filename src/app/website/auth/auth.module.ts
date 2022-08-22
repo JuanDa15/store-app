@@ -8,6 +8,7 @@ import { RegisterComponent } from './pages/register/register.component';
 import { LoginComponent } from './pages/login/login.component';
 import { LoginFormComponent } from './components/login-form/login-form.component';
 import { ProfileComponent } from './pages/profile/profile.component';
+import { QuicklinkModule } from 'ngx-quicklink';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { ProfileComponent } from './pages/profile/profile.component';
     CommonModule,
     FormsModule,
     AuthRoutingModule,
+    QuicklinkModule
   ],
   exports: [
     RegisterFormComponent
