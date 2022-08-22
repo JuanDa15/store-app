@@ -74,8 +74,11 @@
     <div class="info">
       <div class="account" *ngIf="userInformation"
            routerLink="/v1/auth/profile">
-        {{userInformation!.email}}
-        <button type="button" (click)="logout()">X</button>
+        <span class="btn btn__primary-text">{{userInformation!.email}}</span>
+        <button type="button" (click)="logout()"
+                class="btn btn__primary-outlined">
+          <i class="fas fa-sign-out"></i>
+        </button>
       </div>
       <div class="shopping-cart-container">
         <a routerLink="/v1/checkout/cart">

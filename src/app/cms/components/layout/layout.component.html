@@ -1,13 +1,21 @@
-<div>
+<div class="cms-layout">
   <header>
     <h3>cms</h3>
   </header>
-  <nav>
+  <aside>
     <ul>
-      <li><a>Grid page</a></li>
-      <li><a>Task page</a></li>
+      <li class="aside-item">
+        <a class="btn btn__primary-text"
+           routerLink="/cms/grid"
+           routerLinkActive="active">Grid page</a>
+      </li>
+      <li class="aside-item">
+        <a class="btn btn__primary-text"
+           routerLink="/cms/tasks"
+           routerLinkActive="active">Task page</a>
+      </li>
     </ul>
-  </nav>
+  </aside>
   <main>
     <router-outlet></router-outlet>
   </main>

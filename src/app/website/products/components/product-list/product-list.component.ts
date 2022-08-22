@@ -63,14 +63,17 @@ export class ProductListComponent implements OnInit{
   }
 
   public openDetail( productID: number | string): void {
-    (this.selectedProduct === productID)
-      ? this.selectedProduct = undefined
-      : this.selectedProduct = productID;
-    this._router.navigate([`${this.actualUrl}`], {
-      queryParams: {
-        product: productID
-      }
-    });
+    if (this.selectedProduct === productID) {
+      this.selectedProduct = undefined;
+      this._router.navigate([`${this.actualUrl}`], { queryParams: {}});
+    } else {
+      this.selectedProduct = productID;
+      this._router.navigate([`${this.actualUrl}`], {
+        queryParams: {
+          product: productID
+        }
+      });
+    }
   }
 
 }

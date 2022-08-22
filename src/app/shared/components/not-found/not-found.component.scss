@@ -2,6 +2,35 @@
   &__container {
     display: grid;
     place-items: center;
-    height: calc(100vh - 150px);;
+    height: calc(100vh - 150px);
+
+    div {
+      text-align: center;
+
+      img {
+        width: 500px;
+      }
+
+      h1 {
+        margin: 0;
+        padding: 0;
+        font-size: 1.8rem;
+        font-weight: 800;
+        color: rgb(98, 185, 120);
+        margin-bottom: 1rem;
+      }
+
+      h2 {
+        margin: 0;
+        padding: 0;
+        font-weight: 600;
+        font-size: 1.5rem;
+      }
+    }
   }
+}
+
+.btn {
+  max-width: 500px !important;
+  margin: 0 auto;
 }
