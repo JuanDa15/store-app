@@ -11,6 +11,7 @@ import { TokenInterceptor } from './utils/interceptors/token.interceptor';
 import { QuicklinkModule } from "ngx-quicklink";
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import { SsrRequestsInterceptor } from './utils/interceptors/ssr-requests.interceptor';
 @NgModule({
   declarations: [
     AppComponent
@@ -35,6 +36,9 @@ import { environment } from '../environments/environment';
     },
     {
       provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true
+    },
+    {
+      provide: HTTP_INTERCEPTORS, useClass: SsrRequestsInterceptor, multi: true
     }
   ],
   bootstrap: [AppComponent]

@@ -11,7 +11,7 @@
     "start:proxy": "ng serve -o --proxy-config ./proxy.config.json",
     "build:analyzer": "ng build --configuration production --aot --build-optimizer --stats-json",
     "analyzer": "npx webpack-bundle-analyzer dist/store-app/stats.json",
-    "dev:ssr": "ng run store-app:serve-ssr",
+    "dev:ssr": "ng run store-app:serve-ssr --proxy-config ./proxy.config.json",
     "serve:ssr": "node dist/store-app/server/main.js",
     "build:ssr": "ng build && ng run store-app:server",
     "prerender": "ng run store-app:prerender"
