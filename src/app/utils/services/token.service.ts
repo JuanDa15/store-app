@@ -8,14 +8,22 @@ export class TokenService {
   constructor() { }
 
   public save(token: string): void {
-    localStorage.setItem('token', token);
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('token', token);
+    }
   }
 
   public get(): string | null {
-    return localStorage.getItem('token');
+    if (typeof window !== 'undefined') {
+      return localStorage.getItem('token');
+    } else {
+      return null;
+    }
   }
 
   public remove(): void {
-    return localStorage.removeItem('token');
+    if (typeof window !== 'undefined') {
+      return localStorage.removeItem('token');
+    }
   }
 }

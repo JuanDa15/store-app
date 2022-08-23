@@ -38,8 +38,9 @@ const routes: Routes = [
     // preloadingStrategy: PreloadAllModules,
     // IA Strategy: With google analytics o firebase analytics and guess js
     enableTracing: false,
-    paramsInheritanceStrategy: 'always'
-  })],
+    paramsInheritanceStrategy: 'always',
+    initialNavigation: 'enabledBlocking'
+})],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
