@@ -1,0 +1,83 @@
+<input type="text" [formControl]="name">
+<p>{{ name.value}}</p>
+
+<p>
+  Email: {{ email.value }}
+  <input type="email" [formControl]="email"/>
+</p>
+
+<p>
+  Phone: {{ phone.value }}
+  <input type="tel" [formControl]="phone"/>
+</p>
+
+<p>
+  Color: {{ color.value }}
+  <input type="color" [formControl]="color"/>
+</p>
+
+<p>
+  Date: {{ date.value }}
+  <input type="date" [formControl]="date"/>
+</p>
+
+<p>
+  Month: {{ month.value }}
+  <input type="month" [formControl]="month"/>
+</p>
+
+<p>
+  Age: {{ age.value }}
+  <input type="number" [formControl]="age"/>
+</p>
+
+<p>
+  Password: {{ password.value }}
+  <input type="password" [formControl]="password"/>
+</p>
+
+<p>
+  Range Price: {{ price.value }}
+  <input type="range" [formControl]="price" min="0" max="100"/>
+</p>
+
+<p>
+  Wekend: {{ week.value }}
+  <input type="week" [formControl]="week"/>
+</p>
+
+<p>
+  Date and time: {{ time.value }}
+  <input type="datetime-local" [formControl]="time"/>
+</p>
+
+<p>
+  Search: {{ search.value }}
+  <input type="search" [formControl]="search"/>
+</p>
+
+<p>
+  URL: {{ url.value }}
+  <input type="url" [formControl]="url"/>
+</p>
+
+<p>
+  checkbox: {{ male.value }}
+  <input type="checkbox" [formControl]="male"/>
+</p>
+
+<p>
+  Image: {{ photo.value }}
+  <input type="image" [formControl]="photo"/>
+</p>
+
+<p>
+  radio: {{ radio.value }}
+  <input type="radio" [formControl]="radio"/>
+</p>
+
+<p>
+  Description: {{ description.value }}
+  <textarea type="text" [formControl]="description">
+  </textarea>
+</p>

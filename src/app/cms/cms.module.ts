@@ -7,19 +7,23 @@ import { GridComponent } from './pages/grid/grid.component';
 import { LayoutComponent } from './components/layout/layout.component';
 import { SharedModule } from 'primeng/api';
 import { QuicklinkModule } from 'ngx-quicklink';
+import { BasicFormComponent } from './components/basic-form/basic-form.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
   declarations: [
     TasksComponent,
     GridComponent,
-    LayoutComponent
+    LayoutComponent,
+    BasicFormComponent
   ],
   imports: [
     CommonModule,
     CmsRoutingModule,
     SharedModule,
-    QuicklinkModule
+    QuicklinkModule,
+    ReactiveFormsModule
   ]
 })
 export class CmsModule { }
