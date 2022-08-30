@@ -1,5 +1,5 @@
 <input type="text" [formControl]="name">
-<p>{{ name.value}}</p>
+<p>{{ name.value}} {{ name.status}}</p>
 
 <p>
   Email: {{ email.value }}
@@ -62,8 +62,8 @@
 </p>
 
 <p>
-  checkbox: {{ male.value }}
-  <input type="checkbox" [formControl]="male"/>
+  checkbox: {{ terms.value }}
+  <input type="checkbox" [formControl]="terms"/>
 </p>
 
 <p>
@@ -72,12 +72,75 @@
 </p>
 
 <p>
-  radio: {{ radio.value }}
-  <input type="radio" [formControl]="radio"/>
+  gender: {{ gender.value }}
+  <label for="male">male
+    <input type="radio" id="male" [formControl]="gender" value="male"
+           name="gender"/>
+  </label>
+  <label for="female">female
+    <input type="radio" id="female" [formControl]="gender" value="female" name="gender"/>
+  </label>
+  <label for="other">other
+    <input type="radio" id="other" [formControl]="gender" value="other" name="gender"/>
+  </label>
+</p>
+
+<p>
+  zones: {{ zones.value }}
+  <label for="zone1">zone1
+    <input type="radio" id="zone1" [formControl]="zones" value="zone1"
+     name="zone"/>
+  </label>
+  <label for="zone2">zone2
+    <input type="radio" id="zone2" [formControl]="zones" value="zone2" name="zone"/>
+  </label>
+  <label for="zone3">zone3
+    <input type="radio" id="zone3" [formControl]="zones" value="zone3" name="zone"/>
+  </label>
 </p>
 
 <p>
   Description: {{ description.value }}
   <textarea type="text" [formControl]="description">
   </textarea>
+</p>
+
+<p>
+  Category: {{ category.value }}
+  <select [formControl]="category">
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+    <option value="5">5</option>
+    <option value="6">6</option>
+    <option value="7">7</option>
+    <option value="8">8</option>
+    <option value="9">9</option>
+    <option value="10">10</option>
+    <option value="11">11</option>
+    <option value="12">12</option>
+    <option value="13">13</option>
+    <option value="14">14</option>
+  </select>
+</p>
+
+<p>
+  Multiple Category: {{ multipleCategory.value }}
+  <select [formControl]="multipleCategory" multiple size="8">
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+    <option value="5">5</option>
+    <option value="6">6</option>
+    <option value="7">7</option>
+    <option value="8">8</option>
+    <option value="9">9</option>
+    <option value="10">10</option>
+    <option value="11">11</option>
+    <option value="12">12</option>
+    <option value="13">13</option>
+    <option value="14">14</option>
+  </select>
 </p>

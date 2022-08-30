@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { FormControl, Validators } from '@angular/forms';
 import { Subject, takeUntil } from 'rxjs';
 
 @Component({
@@ -9,7 +9,7 @@ import { Subject, takeUntil } from 'rxjs';
 })
 export class BasicFormComponent implements OnInit, OnDestroy {
 
-  name = new FormControl('xd');
+  name = new FormControl('', [Validators.required]);
   email = new FormControl('');
   phone = new FormControl('');
   color = new FormControl('#000000');
@@ -23,9 +23,14 @@ export class BasicFormComponent implements OnInit, OnDestroy {
   search = new FormControl('');
   description = new FormControl('');
   url = new FormControl('');
-  male = new FormControl('');
+  terms = new FormControl('');
   photo = new FormControl('');
-  radio = new FormControl('');
+  gender = new FormControl('');
+  zones = new FormControl('');
+
+
+  category = new FormControl('1');
+  multipleCategory = new FormControl('');
 
   private _destroy$ = new Subject();
 
@@ -45,5 +50,15 @@ export class BasicFormComponent implements OnInit, OnDestroy {
       }
     })
   }
+  // Validador general de estados de formulario, reutilizeble
+  // export class GeneralValidators {
+  //   public hasError = (
+  //     form: FormGroup,
+  //     controlName: string,
+  //     errorName: string
+  //   ) => {
+  //     return form.controls[controlName].hasError(errorName);
+  //   };
+  // }
 
 }
