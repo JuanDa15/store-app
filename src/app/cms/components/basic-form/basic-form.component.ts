@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { FormControl, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { Subject, takeUntil } from 'rxjs';
 
 @Component({
@@ -34,7 +34,7 @@ export class BasicFormComponent implements OnInit, OnDestroy {
 
   private _destroy$ = new Subject();
 
-  constructor() { }
+  constructor(private _fb: FormBuilder) { }
 
   ngOnDestroy(): void {
     this._destroy$.next('');
